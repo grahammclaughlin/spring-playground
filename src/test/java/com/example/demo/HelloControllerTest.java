@@ -56,4 +56,17 @@ public class HelloControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string("15"));
     }
+
+    @Test
+    public void testVolume() throws Exception {
+        this.mvc.perform(post("/math/volume/2/3/4").accept(MediaType.TEXT_PLAIN))
+                .andExpect(status().isOk())
+                .andExpect(content().string("24"));
+        this.mvc.perform(get("/math/volume/2/3/4").accept(MediaType.TEXT_PLAIN))
+                .andExpect(status().isOk())
+                .andExpect(content().string("24"));
+        this.mvc.perform(post("/math/volume/20/30/40").accept(MediaType.TEXT_PLAIN))
+                .andExpect(status().isOk())
+                .andExpect(content().string("24000"));
+    }
 }

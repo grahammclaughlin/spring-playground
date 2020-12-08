@@ -1,10 +1,7 @@
 package com.example.demo;
 
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Iterator;
 import java.util.List;
@@ -48,4 +45,11 @@ public class HelloController {
         return MathService.Sum(nums);
     }
 
+    @RequestMapping("/math/volume/{length}/{width}/{height}")
+    public String volume(
+            @PathVariable int length,
+            @PathVariable int width,
+            @PathVariable int height){
+        return Integer.toString(length*width*height);
+    }
 }
