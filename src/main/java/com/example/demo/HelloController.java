@@ -17,7 +17,7 @@ public class HelloController {
 
     @GetMapping("/math/pi")
     public String pi(){
-        return Double.toString(Math.PI);
+        return Double.toString(MathService.Pi());
     }
 
     @GetMapping("/math/calculate")
@@ -55,5 +55,36 @@ public class HelloController {
         return "The volume of a "+
                 length+"x"+width+"x"+height+
                 " rectangle is "+vstr;
+    }
+
+    @PostMapping("math/area")
+    public String area(@RequestParam Map<String,String> body ){
+        double area = 0;
+        if(body.containsValue("circle")){
+            if(!body.containsKey("radius")){
+                return "Invalid";
+            }
+            area =  MathService.area(
+                            Integer.parseInt(body.get("radius"))
+                    );
+            return "Area of a circle with a radius of "+
+                    body.get("radius")+
+                    " is "+area;
+        }
+        else if(body.containsValue("rectangle")){
+            if(!(body.containsKey("width") && body.containsKey("height"))){
+                return "Invalid";
+            }
+            area = MathService.area(
+                    Integer.parseInt(body.get("width")),
+                    Integer.parseInt(body.get("height")));
+            return "Area of a "+
+                    body.get("width")+
+                    "x"+
+                    body.get("height")+
+                    " rectangle is "+
+                    area;
+        }
+        return "Invalid";
     }
 }

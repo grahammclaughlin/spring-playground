@@ -34,4 +34,14 @@ public class MathService {
     public static int Volume(int l, int w, int h) {
         return l*w*h;
     }
+
+    public static double area(int radius) {
+        return Pi()*Math.pow(radius,2);
+    }
+
+    public static double area(int width, int height) {
+        return Math.multiplyExact(width,height);
+    }
+
+    public static double Pi() {return Math.PI;}
 }
