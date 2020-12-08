@@ -50,6 +50,10 @@ public class HelloController {
             @PathVariable int length,
             @PathVariable int width,
             @PathVariable int height){
-        return Integer.toString(length*width*height);
+        int v = MathService.Volume(length,width,height);
+        String vstr = Integer.toString(v);
+        return "The volume of a "+
+                length+"x"+width+"x"+height+
+                " rectangle is "+vstr;
     }
 }

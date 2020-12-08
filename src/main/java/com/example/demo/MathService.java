@@ -30,4 +30,8 @@ public class MathService {
         }
         return Integer.toString(sum);
     }
+
+    public static int Volume(int l, int w, int h) {
+        return l*w*h;
+    }
 }
