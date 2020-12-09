@@ -7,8 +7,11 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 
+import static org.mockito.ArgumentMatchers.isNull;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+import static org.hamcrest.Matchers.is;
 
 @WebMvcTest(HelloController.class)
 
@@ -95,17 +98,5 @@ public class HelloControllerTest {
                 .andExpect(content().string("Invalid"));
     }
 
-    /*@Test
-    public void testCreateComment() throws Exception {
-        String content = String.valueOf(new Random().nextInt());
 
-        MockHttpServletRequestBuilder request1 = post("/comments")
-                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                .param("content", content)
-                .param("author", "Dwayne");
-
-        this.mvc.perform(request1)
-                .andExpect(status().isOk())
-                .andExpect(content().string(String.format("Dwayne said %s!", content)));
-    }*/
 }
