@@ -2,6 +2,7 @@ package com.example.demo;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,7 +13,9 @@ public class Lesson {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonView(LessonViews.Concise.class)
     private Long id;
+    @JsonView(LessonViews.Concise.class)
     private String title;
 
 
