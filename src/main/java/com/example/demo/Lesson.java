@@ -46,4 +46,16 @@ public class Lesson {
     public void setDeliveredOn(Date deliveredOn) {
         this.deliveredOn = deliveredOn;
     }
+
+    public void update(Lesson l){
+        if(l.getId() instanceof Number){
+            setId(l.getId());
+        }
+        if(l.getTitle() instanceof String){
+            setTitle(l.getTitle());
+        }
+        if(l.getDeliveredOn() instanceof Date){
+            setDeliveredOn(l.getDeliveredOn());
+        }
+    }
 }
